@@ -177,7 +177,7 @@ export default function MentorDetailPage() {
                 {/* Primary Action */}
                 <div className="mt-6 md:mt-0">
                   <a
-                    href={mentor.calComUrl}
+                    href={mentor.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-ink text-paper-light font-semibold hover:bg-[#304258] transition-colors w-full md:w-auto"

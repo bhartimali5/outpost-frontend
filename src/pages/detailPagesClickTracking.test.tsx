@@ -38,7 +38,8 @@ const challenge = {
 
 const mentor = {
   id: 'mentor-1', name: 'Asha Rao', headline: 'Fintech advisor', bio: 'Ten years in payments',
-  expertise: ['Payments'], calComUrl: 'https://cal.com/asha', status: 'APPROVED',
+  expertise: ['Payments'], status: 'APPROVED',
+  bookingUrl: 'https://cal.com/asha', // the field name the backend really returns for mentors
 } as const;
 
 function renderAt(path: string, route: string, element: React.ReactElement) {

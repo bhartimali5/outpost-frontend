@@ -168,9 +168,9 @@ export default function AdminMentorsPage() {
 
                     <div className="flex items-center gap-4 text-sm text-gray-500">
                       <span>{mentor.email}</span>
-                      {mentor.calComUrl && (
+                      {mentor.calcomUrl && (
                         <a
-                          href={mentor.calComUrl}
+                          href={mentor.calcomUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-1 text-indigo-600 hover:text-indigo-800"

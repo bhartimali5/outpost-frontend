@@ -9,7 +9,10 @@ export interface Mentor {
   experience?: string;
   expertise: string[];
   photoUrl?: string;
-  calComUrl: string;
+  /** Booking (cal.com) link, as returned by the public mentor endpoints. */
+  bookingUrl?: string;
+  /** The same link under the name the admin endpoints use. */
+  calcomUrl?: string;
   linkedInUrl?: string;
   twitterUrl?: string;
   websiteUrl?: string;
