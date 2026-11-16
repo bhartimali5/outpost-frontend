@@ -9,6 +9,7 @@ import {
   Handshake,
   Gift,
   Star,
+  BarChart3,
   Settings,
   LogOut,
 } from 'lucide-react';
@@ -37,6 +38,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
     { icon: Handshake, label: 'Partners', path: '/admin/partners' },
     { icon: Gift, label: 'Offers', path: '/admin/offers' },
     { icon: Star, label: 'Spotlight', path: '/admin/spotlight' },
+    { icon: BarChart3, label: 'Engagement', path: '/admin/engagement' },
     { icon: Settings, label: 'Settings', path: '/admin/settings' },
   ];
 
