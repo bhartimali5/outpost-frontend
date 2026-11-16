@@ -7,10 +7,12 @@ import { ChevronLeft, ExternalLink, Calendar, Building2, Tag } from 'lucide-reac
 import { formatDate } from '@/utils/dateUtils';
 import { KeyInfoCard } from '@/components/common/KeyInfoCard';
 import { GrantContentSection } from '@/components/grants/GrantContentSection';
+import { useTrackClick } from '@/hooks/useTrackClick';
 
 export default function ChallengeDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const trackClick = useTrackClick();
 
   const [challenge, setChallenge] = useState<Challenge | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -213,6 +215,7 @@ export default function ChallengeDetailPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-ink text-paper-light font-semibold rounded-lg hover:bg-[#304258] transition-colors"
+              onClick={() => trackClick('CHALLENGE', challenge.id)}
             >
               <span>View Full Details</span>
               <ExternalLink className="w-5 h-5" />
@@ -231,7 +234,13 @@ export default function ChallengeDetailPage() {
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 : 'bg-ink text-paper-light hover:bg-[#304258]'
             }`}
-            onClick={(e) => isClosed && e.preventDefault()}
+            onClick={(e) => {
+              if (isClosed) {
+                e.preventDefault(); // disabled link: no navigation, so nothing to track
+                return;
+              }
+              trackClick('CHALLENGE', challenge.id);
+            }}
           >
             <span>Apply Now</span>
             <ExternalLink className="w-5 h-5" />

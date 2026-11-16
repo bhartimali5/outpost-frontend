@@ -5,11 +5,13 @@ import { mentorsApi, Mentor } from '@/api/endpoints/mentors';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+import { useTrackClick } from '@/hooks/useTrackClick';
 import { ChevronLeft, Calendar, ExternalLink, Globe, Mail } from 'lucide-react';
 
 export default function MentorDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const trackClick = useTrackClick();
 
   const [mentor, setMentor] = useState<Mentor | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -179,6 +181,7 @@ export default function MentorDetailPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-ink text-paper-light font-semibold hover:bg-[#304258] transition-colors w-full md:w-auto"
+                    onClick={() => trackClick('MENTOR', mentor.id)}
                   >
                     <Calendar className="w-5 h-5" />
                     <span>Book a Session</span>

@@ -8,10 +8,12 @@ import { GrantHeader } from '@/components/grants/GrantHeader';
 import { GrantKeyInfo } from '@/components/grants/GrantKeyInfo';
 import { GrantContentSection } from '@/components/grants/GrantContentSection';
 import { ExpiredBanner } from '@/components/common/ExpiredBanner';
+import { useTrackClick } from '@/hooks/useTrackClick';
 
 export default function GrantDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const trackClick = useTrackClick();
   
   const [grant, setGrant] = useState<Grant | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -163,7 +165,13 @@ export default function GrantDetailPage() {
                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 : 'bg-ink text-paper-light hover:bg-[#304258]'
             }`}
-            onClick={(e) => isExpired && e.preventDefault()}
+            onClick={(e) => {
+              if (isExpired) {
+                e.preventDefault(); // disabled link: no navigation, so nothing to track
+                return;
+              }
+              trackClick('GRANT', grant.id);
+            }}
           >
             <span>Go to Source</span>
             <ExternalLink className="w-5 h-5" />
