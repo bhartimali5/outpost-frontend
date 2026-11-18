@@ -8,6 +8,7 @@ import { useSectors } from '@/hooks/useSectors';
 import { useInvalidateAIRankings } from '@/hooks';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
 import { PitchDeckUpload } from '@/components/profile/PitchDeckUpload';
+import { NotificationPreferences } from '@/components/profile/NotificationPreferences';
 import { parseApiError } from '@/utils/errorHandling';
 import { getAIPreference } from '@/utils/aiPreferences';
 import toast from 'react-hot-toast';
@@ -580,6 +581,9 @@ export default function ProfilePage() {
             }}
           />
         </div>
+
+        {/* Notification preferences (OP-088) */}
+        <NotificationPreferences />
 
         {/* Account Settings Card */}
         <div className="mt-6 bg-[#f5f3ed] border border-line p-6">
